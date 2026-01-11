@@ -11,6 +11,8 @@
   "author": "deepak",
   "license": "ISC",
   "dependencies": {
-    "dotenv": "^17.2.3"
+    "dotenv": "^17.2.3",
+    "mongodb": "7.0",
+    "mongoose": "^9.1.2"
   }
 }
