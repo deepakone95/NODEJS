@@ -3,3 +3,7 @@ dist/
 .env
 .DS_Store
 .vscode/
+main_prject/node_modules
+main_prject/dist/
+# main_prject/.env
+main_prject/.DS_Store
