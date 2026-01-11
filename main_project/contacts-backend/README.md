@@ -53,4 +53,10 @@ add below in package.json file
 
       app.use(errorHandler);
 
+  # express async Handler
+
+  npm i express-async-handler
+
+  it will route to our custom error handler if any exception occurs
+
 
