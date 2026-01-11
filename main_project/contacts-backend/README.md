@@ -43,4 +43,14 @@ add below in package.json file
 
     so just add app.use(express.json())
 
+  # Custom Middleware
+
+    if we are not specifying the custom middle ware if we receive any exception it will trough and html response instead of json format so we need to define custom middleware to send proper response back
+
+    we need to add 
+    create middlware directory - errorHandle.js file in that file we need to add content to handle error code
+    and add below line in server.js file after calling the contact API.
+
+      app.use(errorHandler);
+
 
