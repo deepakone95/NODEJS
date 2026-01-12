@@ -8,7 +8,7 @@ const asyncHandler = require("express-async-handler");
 const Contact = require("../models/contactModels");
 
 const getContacts = asyncHandler(async (req, res) => {
-    const contacts = await Contact.find();
+    const contacts = await Contact.find({ user_id: req.user.id });
     res.json(contacts);
 })
 
@@ -23,7 +23,8 @@ const createContact = asyncHandler(async (req, res) => {
     const contact = await Contact.create({
         name,
         email,
-        phone
+        phone,
+        user_id: req.user.id
     });
 
     res.json(contact);
@@ -31,7 +32,11 @@ const createContact = asyncHandler(async (req, res) => {
 
 const updateContact = asyncHandler(async (req, res) => {
     const contact = await Contact.findById(req.params.id);
-    res.json({ "message": `Update a contact ${req.params.id}` });
+
+    if (contact.user_id.toString() !== req.user.id) {
+        res.status(403)
+        throw new Error("User don't have permission to update other user's contact")
+    }
     const updatedContact = await Contact.findByIdAndUpdate(
         req.params.id,
         req.body,
@@ -39,6 +44,7 @@ const updateContact = asyncHandler(async (req, res) => {
     );
     res.json(updatedContact);
 })
+
 const deleteContact = asyncHandler(async (req, res) => {
     const contact = await Contact.findById(req.params.id);
     if (!contact) {
