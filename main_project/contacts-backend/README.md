@@ -60,3 +60,7 @@ add below in package.json file
   it will route to our custom error handler if any exception occurs
 
 
+ # password hashing
+
+  npm i bcrypt
+  
