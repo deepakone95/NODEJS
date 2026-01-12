@@ -63,4 +63,7 @@ add below in package.json file
  # password hashing
 
   npm i bcrypt
-  
+
+  # JSON Web TOken
+  npm i jsonwebtoken
+
